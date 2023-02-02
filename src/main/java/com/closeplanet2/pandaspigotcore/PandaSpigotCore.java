@@ -1,8 +1,6 @@
 package com.closeplanet2.pandaspigotcore;
 
-import com.closeplanet2.pandaspigotcore.Console.ConsoleCore;
-import com.closeplanet2.pandaspigotcore.Location.Vector3;
-import com.closeplanet2.pandaspigotcore.Networking.Objects.GameRoom;
+import com.closeplanet2.pandaspigotcore.Matchmaking.Objects.GameRoom;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;

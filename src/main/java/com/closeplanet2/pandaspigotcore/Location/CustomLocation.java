@@ -18,7 +18,7 @@ public class CustomLocation implements CustomVariable {
         worldID = location.getWorld().getUID();
     }
 
-    public Location Location(){ return new Location(Bukkit.getWorld(worldID), locationData.x, locationData.y, locationData.z, rotationalData.X(), rotationalData.Z()); }
+    public Location getLocation(){ return new Location(Bukkit.getWorld(worldID), locationData.x, locationData.y, locationData.z, rotationalData.X(), rotationalData.Z()); }
 
     @Override
     public String toString() { return locationData.toString() + ":" + rotationalData.toString() + ":(" + worldID.toString() + ")"; }
