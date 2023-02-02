@@ -1,0 +1,6 @@
+name: PandaSpigotCore
+version: 1.0.0
+description: API for plugins!
+author: Clospelanet2
+main: com.closeplanet2.pandaspigotcore.PandaSpigotCore
+api-version: 1.19
