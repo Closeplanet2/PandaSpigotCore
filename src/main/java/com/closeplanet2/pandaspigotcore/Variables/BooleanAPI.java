@@ -7,6 +7,11 @@ public class BooleanAPI implements VariableLogic {
     }
 
     @Override
+    public boolean IsType(Object variable) {
+        return IsType((String) variable);
+    }
+
+    @Override
     public Object ReturnFrom(String variable) {
         return Boolean.parseBoolean(variable);
     }

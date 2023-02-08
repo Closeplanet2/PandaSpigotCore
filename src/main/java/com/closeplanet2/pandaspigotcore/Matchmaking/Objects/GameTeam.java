@@ -17,6 +17,10 @@ public class GameTeam {
         this.playersOnTeam = playersOnTeam;
     }
 
+    public boolean IsPlayer(Player player){
+        return playersOnTeam.contains(player);
+    }
+
     public void AddPlayer(Player player){
         if(!playersOnTeam.contains(player)) playersOnTeam.add(player);
     }

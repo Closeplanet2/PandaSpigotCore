@@ -41,7 +41,7 @@ public class LoopAPI {
                     }
                 }
             }
-            PandaSpigotCore.loopRegister.put(loopValues.loopName(), loopValues.initLoop());
+            PandaSpigotCore.INSTANCE.loopRegister.put(loopValues.loopName(), loopValues.initLoop());
             Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + plugin.getDescription().getFullName() + ": Registered loop " + loopValues.getClass().getName());
         }
     }

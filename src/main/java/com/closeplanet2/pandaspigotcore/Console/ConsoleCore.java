@@ -12,7 +12,7 @@ public class ConsoleCore {
     public static void Send(Object message){
         Send(message.toString());
     }
-    public static void SendError(String message){s
+    public static void SendError(String message){
         Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "===========================");
         Bukkit.getConsoleSender().sendMessage(ChatColor.BOLD + "" + ChatColor.DARK_RED + message);
         Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "===========================");

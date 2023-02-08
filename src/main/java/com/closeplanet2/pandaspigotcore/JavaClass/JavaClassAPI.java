@@ -1,9 +1,11 @@
 package com.closeplanet2.pandaspigotcore.JavaClass;
 
-import com.closeplanet2.pandaspigotcore.Commands.PandaCommand;
+import com.closeplanet2.pandaspigotcore.Commands.Version2.Interfaces.PandaCommand;
 import com.closeplanet2.pandaspigotcore.Console.ConsoleCore;
 import com.closeplanet2.pandaspigotcore.Events.PandaEvent;
+import com.closeplanet2.pandaspigotcore.JavaClass.Enums.SoftDependPlugins;
 import com.closeplanet2.pandaspigotcore.Loop.PandaLoop;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -17,6 +19,10 @@ import java.util.stream.Collectors;
 import java.util.zip.ZipInputStream;
 
 public class JavaClassAPI {
+    public static boolean IsPluginInstalled(SoftDependPlugins softDependPlugin){
+        return Bukkit.getServer().getPluginManager().getPlugin(softDependPlugin.name()) != null;
+    }
+
     public static List<Class<?>> ReturnALlCommandClasses(JavaPlugin javaPlugin, String path) throws IOException, URISyntaxException {
         return ReturnAllClasses(javaPlugin, path).stream().filter(clazz -> clazz.isAnnotationPresent(PandaCommand.class)).collect(Collectors.toList());
     }

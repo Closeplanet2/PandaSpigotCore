@@ -1,7 +1,6 @@
 package com.closeplanet2.pandaspigotcore.Matchmaking.Objects;
 
-import com.closeplanet2.pandaspigotcore.Location.CustomLocation;
-import com.closeplanet2.pandaspigotcore.Matchmaking.Enums.PlayerState;
+import com.closeplanet2.pandaspigotcore.Location.Objects.CustomLocation;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -9,7 +8,6 @@ import org.bukkit.entity.Player;
 public class GamePlayer {
     private Player player = null;
     private GameTeam gameTeam = null;
-    private PlayerState playerState = PlayerState.Joining;
     private Location currentSpawnPoint;
 
     public boolean isTeamGame(){ return gameTeam != null && player == null; }
@@ -21,6 +19,11 @@ public class GamePlayer {
     }
     public GamePlayer(GameTeam gameTeam){
         this.gameTeam = gameTeam;
+    }
+
+    public boolean IsPlayer(Player player){
+        if(isTeamGame()) gameTeam.IsPlayer(player);
+        return this.player == player;
     }
 
     public void SendMessage(String message){
@@ -40,11 +43,6 @@ public class GamePlayer {
         if(isTeamGame()) gameTeam.Teleport(location);
         else player.teleport(location);
     }
-
-    public void SetPlayerState(PlayerState playerState){
-        this.playerState = playerState;
-    }
-
     public void SetCurrentSpawnPoint(Location currentSpawnPoint){
         this.currentSpawnPoint = currentSpawnPoint;
     }
