@@ -1,20 +1,12 @@
 package com.closeplanet2.pandaspigotcore.FileSystem.Helpers;
 
-import com.closeplanet2.pandaspigotcore.Console.ConsoleCore;
-import com.closeplanet2.pandaspigotcore.FileSystem.FileSystemAPI;
 import com.closeplanet2.pandaspigotcore.FileSystem.Interfaces.CustomClass;
 import com.closeplanet2.pandaspigotcore.FileSystem.Interfaces.CustomConfig;
 import com.closeplanet2.pandaspigotcore.FileSystem.Interfaces.CustomHashMap;
 import com.closeplanet2.pandaspigotcore.FileSystem.Interfaces.CustomVariable;
 import com.closeplanet2.pandaspigotcore.FileSystem.Objects.ServerConfig;
-import com.closeplanet2.pandaspigotcore.Variables.VariableAPI;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.ParameterizedType;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.UUID;
 
 public class Serializer {
     public static Object HandleLoadSerialize(Object data, Field field, ServerConfig serverConfig, CustomConfig customConfig, CustomClass customClass, String currentPath) {

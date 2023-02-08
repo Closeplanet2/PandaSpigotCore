@@ -1,6 +1,6 @@
 package com.closeplanet2.pandaspigotcore.Player;
 
-import com.closeplanet2.pandaspigotcore.Variables.UUIDAPI;
+import com.closeplanet2.pandaspigotcore.Variables.UUIDArgument;
 import com.mojang.authlib.properties.Property;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -22,7 +22,7 @@ public class HeadAPI {
     }
 
     public static ItemStack ReturnPlayerHead(String uuid){
-        if(!UUIDAPI.IsTypeStatic(uuid)) return null;
+        if(!UUIDArgument.IsTypeStatic(uuid)) return null;
         var offlinePlayer = Bukkit.getOfflinePlayer(UUID.fromString(uuid));
         return ReturnPlayerHead(offlinePlayer);
     }

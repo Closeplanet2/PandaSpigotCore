@@ -2,7 +2,7 @@ package com.closeplanet2.pandaspigotcore.Variables;
 
 import java.util.UUID;
 
-public class UUIDAPI implements VariableLogic {
+public class UUIDArgument implements VariableLogic {
     public static boolean IsTypeStatic(String variable){
         try {
             var uuid = UUID.fromString(variable);

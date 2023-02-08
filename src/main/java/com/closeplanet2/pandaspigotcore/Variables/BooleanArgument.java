@@ -1,14 +1,9 @@
 package com.closeplanet2.pandaspigotcore.Variables;
 
-public class BooleanAPI implements VariableLogic {
+public class BooleanArgument implements VariableLogic {
     @Override
     public boolean IsType(String variable) {
         return variable.equalsIgnoreCase("false") || variable.equalsIgnoreCase("true");
-    }
-
-    @Override
-    public boolean IsType(Object variable) {
-        return IsType((String) variable);
     }
 
     @Override

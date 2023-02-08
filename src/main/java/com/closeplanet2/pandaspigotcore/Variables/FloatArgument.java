@@ -1,6 +1,6 @@
 package com.closeplanet2.pandaspigotcore.Variables;
 
-public class FloatAPI implements VariableLogic{
+public class FloatArgument implements VariableLogic{
     @Override
     public boolean IsType(String variable) {
         try {
@@ -10,12 +10,6 @@ public class FloatAPI implements VariableLogic{
             return false;
         }
     }
-
-    @Override
-    public boolean IsType(Object variable) {
-        return IsType((String) variable);
-    }
-
     @Override
     public Object ReturnFrom(String variable) {
         return Float.parseFloat(variable);

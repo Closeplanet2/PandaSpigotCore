@@ -1,6 +1,6 @@
 package com.closeplanet2.pandaspigotcore.Variables;
 
-public class LongAPI implements VariableLogic{
+public class LongArgument implements VariableLogic{
     @Override
     public boolean IsType(String variable) {
         try {

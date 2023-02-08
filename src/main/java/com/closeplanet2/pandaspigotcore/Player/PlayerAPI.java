@@ -1,9 +1,8 @@
 package com.closeplanet2.pandaspigotcore.Player;
 
-import com.closeplanet2.pandaspigotcore.Console.ConsoleCore;
 import com.closeplanet2.pandaspigotcore.PandaSpigotCore;
 import com.closeplanet2.pandaspigotcore.Player.Enums.*;
-import com.closeplanet2.pandaspigotcore.Variables.UUIDAPI;
+import com.closeplanet2.pandaspigotcore.Variables.UUIDArgument;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
@@ -12,12 +11,12 @@ import java.util.UUID;
 
 public class PlayerAPI {
     public static OfflinePlayer SearchForOfflinePlayer(String uuidOrName){
-        if(new UUIDAPI().IsType(uuidOrName)) return Bukkit.getOfflinePlayer(UUID.fromString(uuidOrName));
+        if(new UUIDArgument().IsType(uuidOrName)) return Bukkit.getOfflinePlayer(UUID.fromString(uuidOrName));
         return null;
     }
 
     public static Player SearchForPlayer(String uuidOrName){
-        if(new UUIDAPI().IsType(uuidOrName)) return Bukkit.getPlayer(UUID.fromString(uuidOrName));
+        if(new UUIDArgument().IsType(uuidOrName)) return Bukkit.getPlayer(UUID.fromString(uuidOrName));
         return Bukkit.getPlayer(uuidOrName);
     }
 
