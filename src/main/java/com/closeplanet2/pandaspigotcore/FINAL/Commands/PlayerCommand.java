@@ -13,12 +13,16 @@ import java.util.*;
 public abstract class PlayerCommand extends BukkitCommand {
 
     private static class CustomMethod {
-        private String commandSignature;
-        private Method method;
+        private final String commandSignature;
+        private final Method method;
+        private final String permission;
+        private final boolean op;
 
         public CustomMethod(Method method, String commandName){
             var sb = new StringBuilder(commandName);
             if(method.isAnnotationPresent(CommandSignature.class))  sb.append(".").append(method.getAnnotation(CommandSignature.class).value());
+            permission = method.isAnnotationPresent(CommandPermission.class) ? method.getAnnotation(CommandPermission.class).value() : "";
+            op = method.isAnnotationPresent(CommandOP.class) && method.getAnnotation(CommandOP.class).value();
             for(var param : method.getParameterTypes()) sb.append(".").append(param.getSimpleName());
             commandSignature = sb.toString();
             this.method = method;
@@ -74,6 +78,11 @@ public abstract class PlayerCommand extends BukkitCommand {
             return convertArgs;
         }
 
+        private boolean CanPlayerUseCommand(Player player){
+            if(!permission.equals("") && !player.hasPermission(permission)) return false;
+            return !op || player.isOp();
+        }
+
         private void InvokeMethod(PlayerCommand playerCommand, Player player, String[] pi) {
             var commandSignature = method.isAnnotationPresent(CommandSignature.class) ? method.getAnnotation(CommandSignature.class) : null;
             var playerInput = RemoveCommandSignatureFromMatch(pi, commandSignature);
@@ -123,7 +132,7 @@ public abstract class PlayerCommand extends BukkitCommand {
 
     private boolean TestMethods(Player commandSender, String s, String[] args) {
         for(var customMethod : methodArray){
-            if(customMethod.TestSignature(commandSender, s, args)){
+            if(customMethod.TestSignature(commandSender, s, args) & customMethod.CanPlayerUseCommand(commandSender)){
                 customMethod.InvokeMethod(this, commandSender, args);
                 break;
             }

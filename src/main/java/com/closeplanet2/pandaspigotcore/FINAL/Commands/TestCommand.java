@@ -1,7 +1,6 @@
 package com.closeplanet2.pandaspigotcore.FINAL.Commands;
 
 import com.closeplanet2.pandaspigotcore.FINAL.Commands.Interfaces.*;
-import com.closeplanet2.pandaspigotcore.FINAL.Commands.UNFINISHED.CommandPermission;
 import org.bukkit.Bukkit;
 
 import java.lang.reflect.InvocationTargetException;

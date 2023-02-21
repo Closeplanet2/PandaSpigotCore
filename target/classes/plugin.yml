@@ -2,6 +2,6 @@ name: PandaSpigotCore
 version: 1.0.0
 description: API for plugins!
 author: Clospelanet2
-main: com.closeplanet2.pandaspigotcore.PandaSpigotCore
+main: com.closeplanet2.pandaspigotcore.FINAL.PandaSpigotCore
 api-version: 1.19
 softdepend: [Citizens]
