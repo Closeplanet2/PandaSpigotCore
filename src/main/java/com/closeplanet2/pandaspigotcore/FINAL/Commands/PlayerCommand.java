@@ -1,5 +1,6 @@
 package com.closeplanet2.pandaspigotcore.FINAL.Commands;
 
+import com.closeplanet2.pandaspigotcore.FINAL.Commands.Enums.ErrorType;
 import com.closeplanet2.pandaspigotcore.FINAL.Commands.Interfaces.CommandOP;
 import com.closeplanet2.pandaspigotcore.FINAL.Commands.Interfaces.CommandPermission;
 import com.closeplanet2.pandaspigotcore.FINAL.Commands.Interfaces.CommandReturn;
@@ -81,9 +82,10 @@ public abstract class PlayerCommand extends BukkitCommand {
             return convertArgs;
         }
 
-        private boolean CanPlayerUseCommand(Player player){
-            if(!permission.equals("") && !player.hasPermission(permission)) return false;
-            return !op || player.isOp();
+        private ErrorType CanPlayerUseCommand(Player player){
+            if(!permission.equals("") && !player.hasPermission(permission)) return ErrorType.Command_With_Matching_Signature_Requires_Permission;
+            if(op && !player.isOp()) return ErrorType.Command_With_Matching_Signature_Requires_Op;
+            return ErrorType.No_Error;
         }
 
         private void InvokeMethod(PlayerCommand playerCommand, Player player, String[] pi) {
@@ -134,15 +136,23 @@ public abstract class PlayerCommand extends BukkitCommand {
     }
 
     private boolean TestMethods(Player commandSender, String s, String[] args) {
+        var firedCommand = false;
         for(var customMethod : methodArray){
-            if(customMethod.TestSignature(commandSender, s, args) & customMethod.CanPlayerUseCommand(commandSender)){
-                customMethod.InvokeMethod(this, commandSender, args);
-                break;
+            if(customMethod.TestSignature(commandSender, s, args)){
+                firedCommand = true;
+                var errorType = customMethod.CanPlayerUseCommand(commandSender);
+                if(errorType == ErrorType.No_Error){
+                    customMethod.InvokeMethod(this, commandSender, args);
+                    break;
+                }else{
+                    Error(errorType);
+                }
             }
         }
+        if(!firedCommand) Error(ErrorType.No_Matching_Command_Signature_In_Class);
         return false;
     }
 
     public abstract void InvokeVoid(Method method, Object[] invokeArgs);
-
+    public abstract void Error(ErrorType errorType);
 }

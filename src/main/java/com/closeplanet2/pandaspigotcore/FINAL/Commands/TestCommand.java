@@ -1,6 +1,8 @@
 package com.closeplanet2.pandaspigotcore.FINAL.Commands;
 
+import com.closeplanet2.pandaspigotcore.FINAL.Commands.Enums.ErrorType;
 import com.closeplanet2.pandaspigotcore.FINAL.Commands.Interfaces.*;
+import com.closeplanet2.pandaspigotcore.FINAL.Console.ConsoleCore;
 import org.bukkit.Bukkit;
 
 import java.lang.reflect.InvocationTargetException;
@@ -16,6 +18,9 @@ public class TestCommand extends PlayerCommand{
     public void InvokeVoid(Method method, Object[] invokeArgs) {
         try { method.invoke(this, invokeArgs); } catch (IllegalAccessException | InvocationTargetException e) { e.printStackTrace(); }
     }
+
+    @Override
+    public void Error(ErrorType errorType) { ConsoleCore.SendError(errorType); }
 
     @CommandReturn()
     @CommandPermission("Permission.Permission")
@@ -38,5 +43,4 @@ public class TestCommand extends PlayerCommand{
         assert player != null;
         player.sendMessage("Hello f: " + id);
     }
-
 }
