@@ -1,9 +1,12 @@
 package com.closeplanet2.pandaspigotcore.FINAL.JavaClass;
 
+import com.closeplanet2.pandaspigotcore.FINAL.Commands.CommandAPI;
 import com.closeplanet2.pandaspigotcore.FINAL.Commands.Interfaces.PandaCommand;
 import com.closeplanet2.pandaspigotcore.FINAL.Console.ConsoleCore;
+import com.closeplanet2.pandaspigotcore.FINAL.Events.EventsAPI;
 import com.closeplanet2.pandaspigotcore.FINAL.Events.PandaEvent;
 import com.closeplanet2.pandaspigotcore.FINAL.JavaClass.Enums.SoftDependPlugins;
+import com.closeplanet2.pandaspigotcore.FINAL.Loop.LoopAPI;
 import com.closeplanet2.pandaspigotcore.FINAL.Loop.PandaLoop;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -19,6 +22,12 @@ import java.util.stream.Collectors;
 import java.util.zip.ZipInputStream;
 
 public class JavaClassAPI {
+    public static void Register(JavaPlugin javaPlugin, String path){
+        EventsAPI.RegisterALlEvents(javaPlugin, path);
+        CommandAPI.RegisterALlCommands(javaPlugin, path);
+        LoopAPI.RegisterAllLoops(javaPlugin, path);
+    }
+
     public static boolean IsPluginInstalled(SoftDependPlugins softDependPlugin){
         return Bukkit.getServer().getPluginManager().getPlugin(softDependPlugin.name()) != null;
     }

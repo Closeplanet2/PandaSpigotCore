@@ -1,6 +1,6 @@
-package com.closeplanet2.pandaspigotcore.FINAL.Matchmaking.Objects;
+package com.closeplanet2.pandaspigotcore.DEV.Matchmaking.Objects;
 
-import com.closeplanet2.pandaspigotcore.FINAL.Matchmaking.Enums.SettingType;
+import com.closeplanet2.pandaspigotcore.DEV.Matchmaking.Enums.SettingType;
 
 import java.util.HashMap;
 

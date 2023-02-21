@@ -1,7 +1,7 @@
-package com.closeplanet2.pandaspigotcore.FINAL.Matchmaking.Objects;
+package com.closeplanet2.pandaspigotcore.DEV.Matchmaking.Objects;
 
-import com.closeplanet2.pandaspigotcore.FINAL.Matchmaking.Enums.GameState;
-import com.closeplanet2.pandaspigotcore.FINAL.Matchmaking.Enums.PlayerState;
+import com.closeplanet2.pandaspigotcore.DEV.Matchmaking.Enums.GameState;
+import com.closeplanet2.pandaspigotcore.DEV.Matchmaking.Enums.PlayerState;
 import com.closeplanet2.pandaspigotcore.FINAL.World.WorldAPI;
 import org.bukkit.Location;
 import org.bukkit.World;

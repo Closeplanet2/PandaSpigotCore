@@ -4,7 +4,7 @@ import com.closeplanet2.pandaspigotcore.FINAL.Commands.CommandAPI;
 import com.closeplanet2.pandaspigotcore.FINAL.Events.EventsAPI;
 import com.closeplanet2.pandaspigotcore.FINAL.Location.Enums.TIME_OF_DAY;
 import com.closeplanet2.pandaspigotcore.FINAL.Loop.LoopAPI;
-import com.closeplanet2.pandaspigotcore.FINAL.Matchmaking.Objects.GameRoom;
+import com.closeplanet2.pandaspigotcore.DEV.Matchmaking.Objects.GameRoom;
 import com.closeplanet2.pandaspigotcore.FINAL.Player.Enums.*;
 import org.bukkit.Location;
 import org.bukkit.plugin.java.JavaPlugin;

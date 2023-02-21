@@ -1,6 +1,9 @@
 package com.closeplanet2.pandaspigotcore.FINAL.Commands;
 
+import com.closeplanet2.pandaspigotcore.FINAL.Commands.Interfaces.CommandOP;
+import com.closeplanet2.pandaspigotcore.FINAL.Commands.Interfaces.CommandPermission;
 import com.closeplanet2.pandaspigotcore.FINAL.Commands.Interfaces.CommandReturn;
+import com.closeplanet2.pandaspigotcore.FINAL.Commands.Interfaces.CommandSignature;
 import com.closeplanet2.pandaspigotcore.FINAL.Variables.*;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;

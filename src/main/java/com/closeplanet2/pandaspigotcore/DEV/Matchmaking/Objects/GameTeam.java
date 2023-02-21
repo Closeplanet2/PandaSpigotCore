@@ -1,4 +1,4 @@
-package com.closeplanet2.pandaspigotcore.FINAL.Matchmaking.Objects;
+package com.closeplanet2.pandaspigotcore.DEV.Matchmaking.Objects;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;

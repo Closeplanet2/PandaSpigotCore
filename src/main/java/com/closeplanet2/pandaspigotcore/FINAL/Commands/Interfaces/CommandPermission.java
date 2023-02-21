@@ -1,4 +1,4 @@
-package com.closeplanet2.pandaspigotcore.FINAL.Commands;
+package com.closeplanet2.pandaspigotcore.FINAL.Commands.Interfaces;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,6 +7,6 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface CommandOP {
-    public boolean value();
+public @interface CommandPermission {
+    public String value();
 }
