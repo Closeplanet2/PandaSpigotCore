@@ -1,18 +1,15 @@
 package com.closeplanet2.pandaspigotcore;
 
-import com.closeplanet2.pandaspigotcore.Commands.Version2.CommandAPI;
-import com.closeplanet2.pandaspigotcore.Events.EventsAPI;
-import com.closeplanet2.pandaspigotcore.Location.Enums.TIME_OF_DAY;
-import com.closeplanet2.pandaspigotcore.Loop.LoopAPI;
-import com.closeplanet2.pandaspigotcore.Matchmaking.Objects.GameRoom;
-import com.closeplanet2.pandaspigotcore.Player.Enums.*;
-import org.bukkit.GameMode;
+import com.closeplanet2.pandaspigotcore.FINAL.Commands.CommandAPI;
+import com.closeplanet2.pandaspigotcore.FINAL.Events.EventsAPI;
+import com.closeplanet2.pandaspigotcore.FINAL.Location.Enums.TIME_OF_DAY;
+import com.closeplanet2.pandaspigotcore.FINAL.Loop.LoopAPI;
+import com.closeplanet2.pandaspigotcore.FINAL.Matchmaking.Objects.GameRoom;
+import com.closeplanet2.pandaspigotcore.FINAL.Player.Enums.*;
 import org.bukkit.Location;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.UUID;
 
 public class PandaSpigotCore extends JavaPlugin {
