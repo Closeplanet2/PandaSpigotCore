@@ -26,6 +26,11 @@ public class CustomLocation implements CustomVariable {
 
     public Location getLocation(){ return new Location(Bukkit.getWorld(worldID), x, y, z, yaw, pitch); }
 
+    public Double distance(CustomLocation other){
+        Vector3 difference = new Vector3(x - other.x, y - other.y, z - other.z);
+        return Math.sqrt(Math.pow(difference.x, 2f) + Math.pow(difference.y, 2f) + Math.pow(difference.z, 2f));
+    }
+
     @Override
     public String toString() { return String.format("%f, %f, %f, %f, %f", x, y, z, pitch, yaw); }
 

@@ -1,9 +1,7 @@
-package com.closeplanet2.pandaspigotcore;
+package com.closeplanet2.pandaspigotcore.FINAL;
 
-import com.closeplanet2.pandaspigotcore.FINAL.Commands.CommandAPI;
-import com.closeplanet2.pandaspigotcore.FINAL.Events.EventsAPI;
+import com.closeplanet2.pandaspigotcore.FINAL.JavaClass.JavaClassAPI;
 import com.closeplanet2.pandaspigotcore.FINAL.Location.Enums.TIME_OF_DAY;
-import com.closeplanet2.pandaspigotcore.FINAL.Loop.LoopAPI;
 import com.closeplanet2.pandaspigotcore.DEV.Matchmaking.Objects.GameRoom;
 import com.closeplanet2.pandaspigotcore.FINAL.Player.Enums.*;
 import org.bukkit.Location;
@@ -37,9 +35,7 @@ public class PandaSpigotCore extends JavaPlugin {
     @Override
     public void onEnable() {
         INSTANCE = this;
-        CommandAPI.RegisterALlCommands(this, "com.closeplanet2.pandaspigotcore");
-        EventsAPI.RegisterALlEvents(this, "com.closeplanet2.pandaspigotcore");
-        LoopAPI.RegisterAllLoops(this, "com.closeplanet2.pandaspigotcore");
+        JavaClassAPI.Register(this, "com.closeplanet2.pandaspigotcore");
     }
 }
 

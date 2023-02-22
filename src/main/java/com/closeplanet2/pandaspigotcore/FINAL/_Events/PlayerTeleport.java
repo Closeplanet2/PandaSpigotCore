@@ -1,7 +1,7 @@
 package com.closeplanet2.pandaspigotcore.FINAL._Events;
 
 import com.closeplanet2.pandaspigotcore.FINAL.Events.PandaEvent;
-import com.closeplanet2.pandaspigotcore.PandaSpigotCore;
+import com.closeplanet2.pandaspigotcore.FINAL.PandaSpigotCore;
 import com.closeplanet2.pandaspigotcore.FINAL.Player.Enums.TELEPORT_STATE;
 import com.closeplanet2.pandaspigotcore.FINAL.Player.PlayerAPI;
 import org.bukkit.event.EventHandler;

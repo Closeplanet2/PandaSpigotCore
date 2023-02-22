@@ -1,6 +1,6 @@
 package com.closeplanet2.pandaspigotcore.FINAL.StoredData;
 
-import com.closeplanet2.pandaspigotcore.PandaSpigotCore;
+import com.closeplanet2.pandaspigotcore.FINAL.PandaSpigotCore;
 
 import java.util.HashMap;
 import java.util.UUID;

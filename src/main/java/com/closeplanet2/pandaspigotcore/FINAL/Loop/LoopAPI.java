@@ -2,7 +2,7 @@ package com.closeplanet2.pandaspigotcore.FINAL.Loop;
 
 import com.closeplanet2.pandaspigotcore.FINAL.Console.ConsoleCore;
 import com.closeplanet2.pandaspigotcore.FINAL.JavaClass.JavaClassAPI;
-import com.closeplanet2.pandaspigotcore.PandaSpigotCore;
+import com.closeplanet2.pandaspigotcore.FINAL.PandaSpigotCore;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;

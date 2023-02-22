@@ -1,6 +1,6 @@
 package com.closeplanet2.pandaspigotcore.FINAL.Player;
 
-import com.closeplanet2.pandaspigotcore.PandaSpigotCore;
+import com.closeplanet2.pandaspigotcore.FINAL.PandaSpigotCore;
 import com.closeplanet2.pandaspigotcore.FINAL.Player.Enums.*;
 import com.closeplanet2.pandaspigotcore.FINAL.Variables.UUIDArgument;
 import org.bukkit.Bukkit;

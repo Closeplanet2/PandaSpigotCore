@@ -2,7 +2,7 @@ package com.closeplanet2.pandaspigotcore.FINAL._Loops;
 
 import com.closeplanet2.pandaspigotcore.FINAL.Loop.LoopValues;
 import com.closeplanet2.pandaspigotcore.FINAL.Loop.PandaLoop;
-import com.closeplanet2.pandaspigotcore.PandaSpigotCore;
+import com.closeplanet2.pandaspigotcore.FINAL.PandaSpigotCore;
 import org.bukkit.Bukkit;
 
 @PandaLoop

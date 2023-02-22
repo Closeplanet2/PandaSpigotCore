@@ -2,7 +2,7 @@ package com.closeplanet2.pandaspigotcore.FINAL.Location;
 
 import com.closeplanet2.pandaspigotcore.FINAL.Location.Enums.TIME_OF_DAY;
 import com.closeplanet2.pandaspigotcore.FINAL.Location.Objects.Vector3;
-import com.closeplanet2.pandaspigotcore.PandaSpigotCore;
+import com.closeplanet2.pandaspigotcore.FINAL.PandaSpigotCore;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;

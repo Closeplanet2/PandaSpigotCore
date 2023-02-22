@@ -1,6 +1,6 @@
 package com.closeplanet2.pandaspigotcore.FINAL.MessageSystem;
 
-import com.closeplanet2.pandaspigotcore.PandaSpigotCore;
+import com.closeplanet2.pandaspigotcore.FINAL.PandaSpigotCore;
 import com.closeplanet2.pandaspigotcore.FINAL.Player.Enums.MESSAGE_STATE;
 import com.closeplanet2.pandaspigotcore.FINAL.Player.PlayerAPI;
 import org.bukkit.ChatColor;

@@ -2,7 +2,7 @@ package com.closeplanet2.pandaspigotcore.FINAL._Events;
 
 import com.closeplanet2.pandaspigotcore.FINAL.Loop.LoopValues;
 import com.closeplanet2.pandaspigotcore.FINAL.Loop.PandaLoop;
-import com.closeplanet2.pandaspigotcore.PandaSpigotCore;
+import com.closeplanet2.pandaspigotcore.FINAL.PandaSpigotCore;
 import com.closeplanet2.pandaspigotcore.FINAL.Player.Enums.MOVE_STATE;
 import com.closeplanet2.pandaspigotcore.FINAL.Player.PlayerAPI;
 import org.bukkit.Bukkit;
