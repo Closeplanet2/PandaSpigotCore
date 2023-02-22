@@ -1,5 +1,7 @@
 package com.closeplanet2.pandaspigotcore.FINAL;
 
+import com.closeplanet2.pandaspigotcore.FINAL.Console.ConsoleCore;
+import com.closeplanet2.pandaspigotcore.FINAL.FileSystem.TestSaveConfig;
 import com.closeplanet2.pandaspigotcore.FINAL.JavaClass.JavaClassAPI;
 import com.closeplanet2.pandaspigotcore.FINAL.Location.Enums.TIME_OF_DAY;
 import com.closeplanet2.pandaspigotcore.DEV.Matchmaking.Objects.GameRoom;
@@ -36,6 +38,10 @@ public class PandaSpigotCore extends JavaPlugin {
     public void onEnable() {
         INSTANCE = this;
         JavaClassAPI.Register(this, "com.closeplanet2.pandaspigotcore");
+        var testClass = new TestSaveConfig();
+        testClass.LoadConfig();
+        ConsoleCore.Send("Loaded: " + testClass.data3.size());
+        for(var key : testClass.data3.keySet()) ConsoleCore.Send(key + " : " + testClass.data3.get(key));
     }
 }
 

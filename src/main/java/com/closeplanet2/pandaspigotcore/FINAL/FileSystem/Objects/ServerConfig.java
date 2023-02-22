@@ -19,18 +19,23 @@ public class ServerConfig {
         if(file != null) fileConfiguration = YamlConfiguration.loadConfiguration(file);
     }
 
-    public void Set(String path, Object value, boolean override){
+    public void set(String path, Object value, boolean override){
         if(fileConfiguration.contains(path) && !override) return;
         fileConfiguration.set(path, value);
+    }
+
+    public Object get(String path){
+        return fileConfiguration.get(path);
     }
 
     public Object Return(String path){
         return fileConfiguration.get(path);
     }
 
-    public ConfigurationSection ReturnSection(String path){
+    public ConfigurationSection getConfigurationSection(String path){
         return fileConfiguration.getConfigurationSection(path);
     }
+    public boolean isConfigurationSection(String path){return fileConfiguration.isConfigurationSection(path);}
 
     public void SaveConfig(){
         try { fileConfiguration.save(file); }
