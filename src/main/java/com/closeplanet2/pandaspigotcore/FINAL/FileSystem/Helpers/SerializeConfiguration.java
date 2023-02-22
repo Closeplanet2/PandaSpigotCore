@@ -4,8 +4,10 @@ import com.closeplanet2.pandaspigotcore.FINAL.FileSystem.Interfaces.CustomClass;
 import com.closeplanet2.pandaspigotcore.FINAL.FileSystem.Interfaces.CustomConfig;
 import com.closeplanet2.pandaspigotcore.FINAL.FileSystem.Objects.ServerConfig;
 
+import java.lang.reflect.InvocationTargetException;
+
 public class SerializeConfiguration {
-    public static void Save(ServerConfig serverConfig, CustomConfig customConfig, CustomClass customClass, String currentPath) throws IllegalAccessException {
+    public static void Save(ServerConfig serverConfig, CustomConfig customConfig, CustomClass customClass, String currentPath) throws IllegalAccessException, NoSuchMethodException, InvocationTargetException, InstantiationException {
         for(var field: customConfig != null ? customConfig.getClass().getDeclaredFields() : customClass.getClass().getDeclaredFields()){
             var data = field.get(customConfig != null ? customConfig : customClass);
             if(data == null) continue;

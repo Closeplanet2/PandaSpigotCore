@@ -15,10 +15,7 @@ public class EventsAPI {
         try {
             List<Class<?>> eventClasses = JavaClassAPI.ReturnALlEventClasses(javaPlugin, path);
             if(eventClasses.isEmpty()) return;
-            ConsoleCore.Send("");
-            ConsoleCore.Send(ChatColor.AQUA + "==========[Register Event]==========");
             RegisterEvents(eventClasses, javaPlugin);
-            ConsoleCore.Send(ChatColor.AQUA + "=======================================");
         } catch (Exception exception) {
             ConsoleCore.SendError(exception.getMessage());
         }

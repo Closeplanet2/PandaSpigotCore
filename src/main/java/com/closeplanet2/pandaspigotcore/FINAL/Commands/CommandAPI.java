@@ -16,10 +16,7 @@ public class CommandAPI {
         try {
             List<Class<?>> commandClasses = JavaClassAPI.ReturnALlCommandClasses(javaPlugin, path);
             if(commandClasses.isEmpty()) return;
-            ConsoleCore.Send("");
-            ConsoleCore.Send(ChatColor.AQUA + "==========[Register Commands]==========");
             RegisterCommands(commandClasses, javaPlugin);
-            ConsoleCore.Send(ChatColor.AQUA + "=======================================");
         } catch (Exception ignored) { }
     }
 

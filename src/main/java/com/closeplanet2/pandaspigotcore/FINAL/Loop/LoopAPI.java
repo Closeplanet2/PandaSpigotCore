@@ -15,10 +15,7 @@ public class LoopAPI {
         try {
             List<Class<?>> loopClasses = JavaClassAPI.ReturnALlLoopClasses(javaPlugin, path);
             if(loopClasses.isEmpty()) return;
-            ConsoleCore.Send("");
-            ConsoleCore.Send(ChatColor.AQUA + "==========[Register Loops]==========");
             RegisterLoops(loopClasses, javaPlugin);
-            ConsoleCore.Send(ChatColor.AQUA + "=======================================");
         }catch (Exception exception) {
             ConsoleCore.SendError(exception.getMessage());
         }

@@ -7,6 +7,7 @@ import com.closeplanet2.pandaspigotcore.FINAL.FileSystem.Objects.ServerConfig;
 import com.closeplanet2.pandaspigotcore.FINAL.Variables.VariableAPI;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.ParameterizedType;
 import java.util.HashMap;
 import java.util.UUID;
@@ -42,12 +43,10 @@ public class Serializer {
             }
         }
 
-
-
         return map;
     }
 
-    public static void HandleSaveSerialize(Object data, Field field, ServerConfig serverConfig, CustomConfig customConfig, CustomClass customClass, String currentPath) throws IllegalAccessException {
+    public static void HandleSaveSerialize(Object data, Field field, ServerConfig serverConfig, CustomConfig customConfig, CustomClass customClass, String currentPath) throws IllegalAccessException, NoSuchMethodException, InstantiationException, InvocationTargetException {
         if(data.getClass() == HashMap.class) {
             HandleHashMap(field, currentPath, serverConfig, customConfig, customClass);
         }else if(data instanceof CustomVariable){
@@ -62,7 +61,7 @@ public class Serializer {
         }
     }
 
-    private static void HandleHashMap(Field field, String path, ServerConfig serverConfig, CustomConfig customConfig, CustomClass customClass) throws IllegalAccessException {
+    private static void HandleHashMap(Field field, String path, ServerConfig serverConfig, CustomConfig customConfig, CustomClass customClass) throws IllegalAccessException, NoSuchMethodException, InvocationTargetException, InstantiationException {
         var stringListType = (ParameterizedType) field.getGenericType();
         var firstType = (Class<?>) stringListType.getActualTypeArguments()[0];
         var secondType = (Class<?>) stringListType.getActualTypeArguments()[1];
@@ -73,7 +72,7 @@ public class Serializer {
         if(IsSecondTypeSaveable(map)){
             for(var key : map.keySet()){
                 var firstTypeName = firstType == UUID.class ? UUID.fromString(key.toString()).toString() : key.toString();
-                SerializeConfiguration.Save(serverConfig, customConfig, customClass, path + "." + firstTypeName + ".");
+                SerializeConfiguration.Save(serverConfig, null, (CustomClass) map.get(key), path + "." + firstTypeName + ".");
             }
         }else{
             for(var key  : map.keySet()){

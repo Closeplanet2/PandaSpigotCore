@@ -4,6 +4,8 @@ import com.closeplanet2.pandaspigotcore.FINAL.FileSystem.Enums.SaveType;
 import com.closeplanet2.pandaspigotcore.FINAL.FileSystem.Helpers.SerializeConfiguration;
 import com.closeplanet2.pandaspigotcore.FINAL.FileSystem.Interfaces.CustomConfig;
 
+import java.lang.reflect.InvocationTargetException;
+
 public class FileSystemAPI {
     public static void Load(CustomConfig customConfig, SaveType saveType){
         switch (saveType){
@@ -30,7 +32,7 @@ public class FileSystemAPI {
         private static void Save(CustomConfig customConfig){
             var serverConfig = customConfig.ReturnServerConfig();
             try { SerializeConfiguration.Save(serverConfig, customConfig, null, "");
-            } catch (IllegalAccessException e) { e.printStackTrace(); }
+            } catch (IllegalAccessException | InstantiationException | InvocationTargetException | NoSuchMethodException e) { e.printStackTrace(); }
             serverConfig.UpdateConfig();
         }
     }
