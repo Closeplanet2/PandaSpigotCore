@@ -3,7 +3,8 @@ package com.closeplanet2.pandaspigotcore.FINAL;
 import com.closeplanet2.pandaspigotcore.FINAL.Console.ConsoleCore;
 import com.closeplanet2.pandaspigotcore.FINAL.JavaClass.JavaClassAPI;
 import com.closeplanet2.pandaspigotcore.FINAL.Location.Enums.TIME_OF_DAY;
-import com.closeplanet2.pandaspigotcore.DEV.Matchmaking.Objects.GameRoom;
+import com.closeplanet2.pandaspigotcore.FINAL.Matchmaking.MIGameManager;
+import com.closeplanet2.pandaspigotcore.FINAL.Matchmaking.Object.Game;
 import com.closeplanet2.pandaspigotcore.FINAL.Player.Enums.*;
 import org.bukkit.Location;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -13,7 +14,7 @@ import java.util.UUID;
 
 public class PandaSpigotCore extends JavaPlugin {
     public static PandaSpigotCore INSTANCE;
-    public HashMap<UUID, GameRoom> networkGames = new HashMap<>();
+    public HashMap<UUID, Game> networkGames = new HashMap<>();
     public HashMap<String, Integer> loopRegister = new HashMap<>();
     public HashMap<String, Location> teleportLocations = new HashMap<>();
     public HashMap<String, String> storedMessages = new HashMap<>();
@@ -37,6 +38,9 @@ public class PandaSpigotCore extends JavaPlugin {
     public void onEnable() {
         INSTANCE = this;
         JavaClassAPI.Register(this, "com.closeplanet2.pandaspigotcore");
+
+        var gameManager = new MIGameManager();
+        gameManager.FindGame();
     }
 }
 

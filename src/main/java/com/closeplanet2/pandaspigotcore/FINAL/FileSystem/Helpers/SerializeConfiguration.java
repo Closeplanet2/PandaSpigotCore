@@ -1,8 +1,10 @@
 package com.closeplanet2.pandaspigotcore.FINAL.FileSystem.Helpers;
 
+import com.closeplanet2.pandaspigotcore.FINAL.Console.ConsoleCore;
 import com.closeplanet2.pandaspigotcore.FINAL.FileSystem.Interfaces.CustomClass;
 import com.closeplanet2.pandaspigotcore.FINAL.FileSystem.Interfaces.CustomConfig;
 import com.closeplanet2.pandaspigotcore.FINAL.FileSystem.Objects.ServerConfig;
+import org.bukkit.ChatColor;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -21,7 +23,7 @@ public class SerializeConfiguration {
         }
     }
 
-    public static Object Load(ServerConfig serverConfig, CustomConfig customConfig, CustomClass customClass, String currentPath) throws IllegalAccessException {
+    public static Object Load(ServerConfig serverConfig, CustomConfig customConfig, CustomClass customClass, String currentPath) throws IllegalAccessException, NoSuchMethodException, InvocationTargetException, InstantiationException {
         for(var field : customConfig != null ? customConfig.getClass().getDeclaredFields() : customClass.getClass().getDeclaredFields()){
             var data = field.get(customConfig != null ? customConfig : customClass);
             if(data == null) continue;
