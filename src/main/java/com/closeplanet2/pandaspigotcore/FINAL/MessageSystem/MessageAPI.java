@@ -8,6 +8,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 public class MessageAPI {
+
+
+
     public static void HandleChatEvent(AsyncPlayerChatEvent event){
         var sender = event.getPlayer();
         var senderState = PlayerAPI.RETURN_MESSAGE_STATE(sender);

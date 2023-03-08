@@ -1,10 +1,7 @@
 package com.closeplanet2.pandaspigotcore.FINAL.Commands;
 
 import com.closeplanet2.pandaspigotcore.FINAL.Commands.Enums.ErrorType;
-import com.closeplanet2.pandaspigotcore.FINAL.Commands.Interfaces.CommandOP;
-import com.closeplanet2.pandaspigotcore.FINAL.Commands.Interfaces.CommandPermission;
-import com.closeplanet2.pandaspigotcore.FINAL.Commands.Interfaces.CommandReturn;
-import com.closeplanet2.pandaspigotcore.FINAL.Commands.Interfaces.CommandSignature;
+import com.closeplanet2.pandaspigotcore.FINAL.Commands.Interfaces.*;
 import com.closeplanet2.pandaspigotcore.FINAL.Variables.*;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
@@ -19,20 +16,24 @@ public abstract class PlayerCommand extends BukkitCommand {
     private static class CustomMethod {
         private final String commandSignature;
         private final Method method;
-        private final String permission;
+        private final String[] permission;
+        private final String[] tabCompleteOn;
+        private final String[] tabComplete;
         private final boolean op;
 
         public CustomMethod(Method method, String commandName){
             var sb = new StringBuilder(commandName);
             if(method.isAnnotationPresent(CommandSignature.class))  sb.append(".").append(method.getAnnotation(CommandSignature.class).value());
-            permission = method.isAnnotationPresent(CommandPermission.class) ? method.getAnnotation(CommandPermission.class).value() : "";
+            permission = method.isAnnotationPresent(CommandPermission.class) ? method.getAnnotation(CommandPermission.class).value() : null;
             op = method.isAnnotationPresent(CommandOP.class) && method.getAnnotation(CommandOP.class).value();
+            tabCompleteOn = method.isAnnotationPresent(TabCompleteOn.class) ? method.getAnnotation(TabCompleteOn.class).value() : null;
+            tabComplete = method.isAnnotationPresent(TabComplete.class) ? method.getAnnotation(TabComplete.class).value() : null;
             for(var param : method.getParameterTypes()) sb.append(".").append(param.getSimpleName());
             commandSignature = sb.toString();
             this.method = method;
         }
 
-        private boolean TestSignature(Player commandSender, String commandName, String[] playerInput){
+        private boolean TestSignature(Player commandSender, String commandName, String[] playerInput, boolean testBefore){
             var sb = new StringBuilder(commandName);
             var commandSignature = method.isAnnotationPresent(CommandSignature.class) ? method.getAnnotation(CommandSignature.class) : null;
             if(commandSignature != null) sb.append(".").append(commandSignature.value());
@@ -40,11 +41,16 @@ public abstract class PlayerCommand extends BukkitCommand {
             if(!doesCommandSignatureMatch) return false;
 
             var serialisedPlayerInput = commandSignature == null ? playerInput : RemoveCommandSignatureFromMatch(playerInput, commandSignature);
-            var classArguments = ConvertArgsToClass(commandSender, serialisedPlayerInput);
+            var testBefore_serialisedPlayerInput = TestForTestBefore(testBefore, serialisedPlayerInput);
+            var classArguments = ConvertArgsToClass(commandSender, testBefore_serialisedPlayerInput);
             for(var param : classArguments) sb.append(".").append(param.getSimpleName());
 
-            Bukkit.broadcastMessage(this.commandSignature + " : " + sb.toString());
             return this.commandSignature.equalsIgnoreCase(sb.toString());
+        }
+
+        private String[] TestForTestBefore(boolean testBefore, String[] serialisedPlayerInput){
+            if(!testBefore) return serialisedPlayerInput;
+            else return Arrays.copyOf(serialisedPlayerInput, serialisedPlayerInput.length-1);
         }
 
         private boolean DoesCommandSignatureMatch(String[] playerInput, CommandSignature commandSignature){
@@ -83,7 +89,9 @@ public abstract class PlayerCommand extends BukkitCommand {
         }
 
         private ErrorType CanPlayerUseCommand(Player player){
-            if(!permission.equals("") && !player.hasPermission(permission)) return ErrorType.Command_With_Matching_Signature_Requires_Permission;
+            if(permission != null){
+                for(var perm : permission) if(!player.hasPermission(perm)) return ErrorType.Command_With_Matching_Signature_Requires_Permission;
+            }
             if(op && !player.isOp()) return ErrorType.Command_With_Matching_Signature_Requires_Op;
             return ErrorType.No_Error;
         }
@@ -138,7 +146,7 @@ public abstract class PlayerCommand extends BukkitCommand {
     private boolean TestMethods(Player commandSender, String s, String[] args) {
         var firedCommand = false;
         for(var customMethod : methodArray){
-            if(customMethod.TestSignature(commandSender, s, args)){
+            if(customMethod.TestSignature(commandSender, s, args, false)){
                 firedCommand = true;
                 var errorType = customMethod.CanPlayerUseCommand(commandSender);
                 if(errorType == ErrorType.No_Error){
@@ -155,4 +163,27 @@ public abstract class PlayerCommand extends BukkitCommand {
 
     public abstract void InvokeVoid(Method method, Object[] invokeArgs);
     public abstract void Error(ErrorType errorType);
+
+    @Override
+    public List<String> tabComplete(CommandSender commandSender, String s, String[] args) throws IllegalArgumentException {
+        if(!(commandSender instanceof Player)) new ArrayList<String>();
+        var player = (Player) commandSender;
+
+        var data = new ArrayList<String>();
+        for(var customMethod : methodArray){
+            if(customMethod.TestSignature(player, s, args, false)){
+                var errorType = customMethod.CanPlayerUseCommand(player);
+                if(errorType == ErrorType.No_Error){
+                    if(customMethod.tabCompleteOn != null) Collections.addAll(data, customMethod.tabCompleteOn);
+                }
+            }
+            else if(customMethod.TestSignature(player, s, args, true)){
+                var errorType = customMethod.CanPlayerUseCommand(player);
+                if(errorType == ErrorType.No_Error){
+                    if(customMethod.tabComplete != null) Collections.addAll(data, customMethod.tabComplete);
+                }
+            }
+        }
+        return data;
+    }
 }

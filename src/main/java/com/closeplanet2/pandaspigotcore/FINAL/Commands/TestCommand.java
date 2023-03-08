@@ -31,6 +31,7 @@ public class TestCommand extends PlayerCommand{
     }
 
     @CommandReturn()
+    @TabComplete({"Entry1", "Entry2", "Entry3"})
     public void Command_2(UUID uuid, int id){
         var player = Bukkit.getPlayer(uuid);
         assert player != null;

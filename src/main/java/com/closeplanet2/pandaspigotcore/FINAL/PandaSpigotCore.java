@@ -3,7 +3,6 @@ package com.closeplanet2.pandaspigotcore.FINAL;
 import com.closeplanet2.pandaspigotcore.FINAL.Console.ConsoleCore;
 import com.closeplanet2.pandaspigotcore.FINAL.JavaClass.JavaClassAPI;
 import com.closeplanet2.pandaspigotcore.FINAL.Location.Enums.TIME_OF_DAY;
-import com.closeplanet2.pandaspigotcore.FINAL.Matchmaking.MIGameManager;
 import com.closeplanet2.pandaspigotcore.FINAL.Matchmaking.Object.Game;
 import com.closeplanet2.pandaspigotcore.FINAL.Player.Enums.*;
 import org.bukkit.Location;
@@ -38,9 +37,6 @@ public class PandaSpigotCore extends JavaPlugin {
     public void onEnable() {
         INSTANCE = this;
         JavaClassAPI.Register(this, "com.closeplanet2.pandaspigotcore");
-
-        var gameManager = new MIGameManager();
-        gameManager.FindGame();
     }
 }
 

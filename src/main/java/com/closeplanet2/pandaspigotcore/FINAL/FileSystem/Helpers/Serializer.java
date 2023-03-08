@@ -79,9 +79,7 @@ public class Serializer {
         return map;
     }
 
-    //TODO for arraylist support other types List<HashMap<String, String>
-    //TODO hashmap could include arraylist HashMap<String, List<Custom Class>>
-    //TODO create a helper which passes in a bunch of objects and return string with everything formatted for path
+
     public static void HandleSaveSerialize(Object data, Field field, ServerConfig serverConfig, CustomConfig customConfig, CustomClass customClass, String currentPath) throws IllegalAccessException, NoSuchMethodException, InstantiationException, InvocationTargetException {
         if(data.getClass() == HashMap.class) {
             HandleHashMap(field, currentPath, serverConfig, customConfig, customClass);
