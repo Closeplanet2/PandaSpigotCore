@@ -3,12 +3,15 @@ package com.closeplanet2.pandaspigotcore.FINAL;
 import com.closeplanet2.pandaspigotcore.FINAL.Console.ConsoleCore;
 import com.closeplanet2.pandaspigotcore.FINAL.JavaClass.JavaClassAPI;
 import com.closeplanet2.pandaspigotcore.FINAL.Location.Enums.TIME_OF_DAY;
+import com.closeplanet2.pandaspigotcore.FINAL.Matchmaking.GameNetworkCallbacks;
 import com.closeplanet2.pandaspigotcore.FINAL.Matchmaking.Object.Game;
 import com.closeplanet2.pandaspigotcore.FINAL.Player.Enums.*;
 import org.bukkit.Location;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 public class PandaSpigotCore extends JavaPlugin {
@@ -32,6 +35,8 @@ public class PandaSpigotCore extends JavaPlugin {
     public HashMap<UUID, TELEPORT_STATE> playerTeleportStates = new HashMap<>();
 
     public HashMap<UUID, Location> STORE_PLAYER_LOCATION = new HashMap<>();
+
+    public List<GameNetworkCallbacks> gameNetworkCallbacks = new ArrayList<>();
 
     @Override
     public void onEnable() {

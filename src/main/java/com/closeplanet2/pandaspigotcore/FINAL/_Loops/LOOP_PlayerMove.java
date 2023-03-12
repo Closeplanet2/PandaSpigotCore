@@ -1,4 +1,4 @@
-package com.closeplanet2.pandaspigotcore.FINAL._Events;
+package com.closeplanet2.pandaspigotcore.FINAL._Loops;
 
 import com.closeplanet2.pandaspigotcore.FINAL.Loop.LoopValues;
 import com.closeplanet2.pandaspigotcore.FINAL.Loop.PandaLoop;

@@ -20,7 +20,10 @@ public class GameManager {
     public static void FindRoom(GameNetworkCallbacks networkCallbacks, GameSettings gameSettings, Player player){
         for(var gameUUID : PandaSpigotCore.INSTANCE.networkGames.keySet()){
             var game = PandaSpigotCore.INSTANCE.networkGames.get(gameUUID);
-            if(game.TestGameSettings(gameSettings.gameType(), gameSettings.perTeam())){ networkCallbacks.FindRoomSuccess(game, player); }
+            if(game.TestGameSettings(gameSettings.gameType(), gameSettings.perTeam())){
+                networkCallbacks.FindRoomSuccess(game, player);
+                return;
+            }
         }
         networkCallbacks.FindRoomFailed(gameSettings, "Cannot Find Game!", player);
     }
@@ -33,5 +36,9 @@ public class GameManager {
         }
         PandaSpigotCore.INSTANCE.networkGames.put(game.gameUUID, game);
         networkCallbacks.CreateRoomSuccess(game, player);
+    }
+
+    public static void AddNetworkCallback(GameNetworkCallbacks networkCallbacks){
+        PandaSpigotCore.INSTANCE.gameNetworkCallbacks.add(networkCallbacks);
     }
 }

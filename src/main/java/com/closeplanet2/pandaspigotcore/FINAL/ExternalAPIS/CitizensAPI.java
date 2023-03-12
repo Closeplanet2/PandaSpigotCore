@@ -26,7 +26,6 @@ public class CitizensAPI {
         private String textureSignature = "";
         private String textureDetail = "";
         private GameMode gameMode = GameMode.CREATIVE;
-        private Location homeLocation;
         private HashMap<Equipment.EquipmentSlot, ItemStack> npcInventory = new HashMap<>();
 
         public NPCCreator(){}
@@ -81,11 +80,6 @@ public class CitizensAPI {
             return this;
         }
 
-        public NPCCreator homeLocation(Location homeLocation){
-            this.homeLocation = homeLocation;
-            return this;
-        }
-
         public NPC Spawn(){
             if(!JavaClassAPI.IsPluginInstalled(SoftDependPlugins.Citizens)) return null;
             var currentNPC = net.citizensnpcs.api.CitizensAPI.getNPCRegistry().createNPC(entityType, npcName);
@@ -93,7 +87,6 @@ public class CitizensAPI {
             currentNPC.getOrAddTrait(LookClose.class).lookClose(lookClose);
             currentNPC.getNavigator().getDefaultParameters().baseSpeed(walkSpeed);
             currentNPC.getOrAddTrait(GameModeTrait.class).setGameMode(gameMode);
-            if(homeLocation != null) currentNPC.getOrAddTrait(HomeTrait.class).setHomeLocation(homeLocation);
             for(var equipmentSlot : npcInventory.keySet()) currentNPC.getOrAddTrait(Equipment.class).set(equipmentSlot, npcInventory.get(equipmentSlot));
             currentNPC.setProtected(protectEntity);
             currentNPC.spawn(spawnLocation);

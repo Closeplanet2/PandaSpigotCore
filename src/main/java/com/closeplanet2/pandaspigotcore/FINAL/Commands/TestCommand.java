@@ -24,6 +24,7 @@ public class TestCommand extends PlayerCommand{
 
     @CommandReturn()
     @CommandPermission("Permission.Permission")
+    @TabComplete({"Entry1", "Entry2", "Entry3"})
     public void Command_1(UUID uuid){
         var player = Bukkit.getPlayer(uuid);
         assert player != null;
@@ -31,7 +32,7 @@ public class TestCommand extends PlayerCommand{
     }
 
     @CommandReturn()
-    @TabComplete({"Entry1", "Entry2", "Entry3"})
+    @TabCompleteOn("On")
     public void Command_2(UUID uuid, int id){
         var player = Bukkit.getPlayer(uuid);
         assert player != null;

@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class WorldAPI {
-    public static World CreateNewInstanceOfWorld(String sourceWorldName, String targetWorldName){
+    public static World CreateNewInstanceOfWorld(String sourceWorldName, String targetWorldName, String overrideName){
         var rootDirectory = Bukkit.getServer().getWorldContainer().getAbsolutePath();
-        return CreateNewInstanceOfWorld(new File(rootDirectory + "/" + sourceWorldName), new File(rootDirectory + "/" + targetWorldName), targetWorldName);
+        return CreateNewInstanceOfWorld(new File(rootDirectory + "/" + sourceWorldName), new File(rootDirectory + "/" + targetWorldName), overrideName != null ? overrideName : targetWorldName);
     }
 
     public static World CreateNewInstanceOfWorld(File source, File target, String targetWorldName){

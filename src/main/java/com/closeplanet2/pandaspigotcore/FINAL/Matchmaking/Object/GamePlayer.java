@@ -6,6 +6,8 @@ import com.closeplanet2.pandaspigotcore.FINAL.Matchmaking.Enums.PlayerState;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
+import java.util.HashMap;
+
 public class GamePlayer{
     public Player player = null;
     public GameTeam gameTeam = null;
@@ -14,6 +16,13 @@ public class GamePlayer{
 
     public GamePlayer(Player player){ this.player = player; }
     public GamePlayer(GameTeam gameTeam){ this.gameTeam = gameTeam; }
+
+    public HashMap<Player, Double> ReturnDistanceToLocation(Location location){
+        if(IsTeamGame()) return gameTeam.ReturnDistanceToLocation(location);
+        var data = new HashMap<Player, Double>();
+        data.put(player, player.getLocation().distance(location));
+        return data;
+    }
 
     public boolean IsTeamGame(){
         return gameTeam != null && player == null;
@@ -32,6 +41,16 @@ public class GamePlayer{
     public void AddPlayer(Player player){
         if(!IsTeamGame()) return;
         gameTeam.AddPlayer(player);
+    }
+
+    public boolean RemovePlayer(Player player){
+        if(!IsTeamGame()) return true;
+        return gameTeam.RemovePlayer(player);
+    }
+
+    public boolean IsLastPlayer(){
+        if(!IsTeamGame()) return true;
+        return gameTeam.IsLastPlayer();
     }
 
     public void SendMessage(String message){
